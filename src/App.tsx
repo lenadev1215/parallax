@@ -1,58 +1,80 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
 import './assets/sass/style.scss';
 
 // GSAP ScrollTrigger 플러그인 등록
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const App: React.FC = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-  const textRef1 = useRef<HTMLSpanElement>(null);
-  const textRef2 = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    // 배경색 변경을 위한 색상 배열
+  useGSAP(() => {
     const colors = ["#132F57", "#785F75", "#AB8882", "#FCC487", "#FAEDB1", "#B9CFDD", "#80B5EA", "#80B5EA", "#488ECD", "#0A4197", "#051938", "#000000"];
 
-    gsap.to(bgRef.current, {
+    gsap.set('.bg', { width: '100%', height: '100vh' }); 
+    gsap.to('.bg', {
       scrollTrigger: {
-        trigger: wrapperRef.current,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
+        trigger: '.wrapper',
         onUpdate: (self) => {
           const progress = self.progress; // 0 ~ 1 (스크롤 진행률)
           const index = Math.floor(progress * (colors.length - 1));
-          gsap.to(bgRef.current, {
+          gsap.to('.bg', {
             backgroundColor: colors[index],
             ease: 'power2.out',
-            duration: 1.5, // 부드러운 전환 효과
+            duration: 2
           });
         },
       },
     });
-
-    return () => {
-      ScrollTrigger.killAll(); // 컴포넌트 언마운트 시 메모리 정리
-    };
+    gsap.set('.title01', { x: '100vw', bottom: 400 }); 
+    gsap.to('.title01', { 
+      x: -3000,
+      color: 'rgba(97, 75, 95, 0.2)',
+      ease: 'sine.inOut',
+      scrollTrigger: {
+        trigger: '.wrapper',
+        start: 'top top',
+        end: '+=6000',
+        scrub: 2.5
+      }
+    });
+    gsap.set('.title02', { x: '100vw', bottom: -67 }); 
+    gsap.to('.title02', { 
+      x: -3000,
+      color: 'rgba(97, 75, 95, 0.4)',
+      ease: 'power3.inOut',
+      scrollTrigger: {
+        trigger: '.wrapper',
+        start: 'top top',
+        end: '+=7000',
+        scrub: 4
+      }
+    });
   }, []);
 
   return (
-    <div ref={wrapperRef} className="wrapper">
-      <div ref={bgRef} className="bg">
+    <div className="wrapper">
+      <div className="bg"></div>
+      <div className="element">
+        {/* text1 */}
         <span 
-          ref={textRef1}
-          className="title"
+          className="title title01"
           style={{ 
-            fontSize: '400px'
+            color: 'rgba(11, 28, 52, 0.8)',
+            fontSize: 380,
+            letterSpacing: '-4px',
+            zIndex: 1
           }}
         >Kimkayeong</span>
+        {/* text2 */}
         <span 
-          ref={textRef2}
-          className="title"
+          className="title title02"
+          style={{
+            color: 'rgba(97, 75, 95, 0.4)',
+            filter: 'blur(10px)',
+            fontSize: 600
+          }}
         >
           Lenadev
         </span>
