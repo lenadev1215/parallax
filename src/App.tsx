@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const App: React.FC = () => {
   useGSAP(() => {
-    const colors = ["#132F57", "#785F75", "#AB8882", "#FCC487", "#FAEDB1", "#B9CFDD", "#80B5EA", "#80B5EA", "#488ECD", "#0A4197", "#051938", "#000000", "#000000"];
+    const colors = ["#132F57", "#785F75", "#AB8882", "#FCC487", "#FAEDB1", "#B9CFDD", "#80B5EA", "#80B5EA", "#488ECD", "#0A4197", "#051938", "#000000"];
 
     gsap.set('.bg', { width: '100%', height: '100vh' }); 
     gsap.to('.bg', {
@@ -24,10 +24,10 @@ const App: React.FC = () => {
             ease: 'power2.out',
             duration: 2
           });
-          if ( progress > 0.2 && progress < 0.45 ) {
+          if ( progress > 0.2 && progress < 0.58 ) {
             gsap.to('.bg', {
-              width: 'calc(100% - 80px)',
-              height: 'calc(100vh - 80px)',
+              width: 'calc(100% - 120px)',
+              height: 'calc(100vh - 120px)',
               duration: 1,
             });
           } else {
@@ -81,7 +81,7 @@ const App: React.FC = () => {
     gsap.set('.title03', { x: '100vw', top: 300 }); 
     gsap.to('.title03', { 
       x: -2000,
-      color: 'rgba(155, 123, 118, 0.6)',
+      color: 'rgba(251, 193, 128, 0.3)',
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: '.wrapper',
@@ -93,7 +93,7 @@ const App: React.FC = () => {
     gsap.set('.title04', { x: '100vw', top: 500 }); 
     gsap.to('.title04', { 
       x: -3000,
-      color: 'rgba(240, 186, 128, 0.6)',
+      color: 'rgba(238, 185, 128, 0.6)',
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: '.wrapper',
@@ -116,7 +116,7 @@ const App: React.FC = () => {
     gsap.set('.title06', { x: '100vw', top: 400 }); 
     gsap.to('.title06', { 
       x: -3000,
-      color: 'rgba(240, 186, 128, 0.4)',
+      color: 'rgba(252, 222, 135, 0.4)',
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: '.wrapper',
@@ -128,19 +128,49 @@ const App: React.FC = () => {
     gsap.set('.title07', { x: '100vw', bottom: 40 }); 
     gsap.to('.title07', { 
       x: -3000,
-      color: 'rgba(240, 186, 128, 0.4)',
+      color: 'rgba(252, 222, 135, 0.4)',
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: '.wrapper',
         start: 'top top',
-        end: '+=24000',
+        end: '+=20000',
+        scrub: 4,
+      }
+    });
+
+    gsap.set('.title08', { y: '100vh' }); 
+    gsap.to('.title08', { 
+      y: '-4000',
+      color: 'rgba(185,207,221, 0.2)',
+      ease: 'power3.inOut',
+      scrollTrigger: {
+        trigger: '.trigger__item',
+        start: 'top top',
+        end: '+=13000',
         scrub: 2,
+      }
+    });
+    gsap.set('.title09', { x: 100, y: '100vh' }); 
+    gsap.to('.title09', { 
+      x: '50vw', 
+      y: '-1000',
+      color: 'rgba(185,207,221, 0.2)',
+      ease: 'power3.inOut',
+      scrollTrigger: {
+        trigger: '.trigger__item',
+        start: 'top top',
+        end: '+=12000',
+        scrub: 2,
+        markers: true,
       }
     });
   }, []);
 
   return (
     <div className="wrapper">
+      <div className="trigger">
+        <div className="trigger__item"></div>
+      </div>
       <div className="bg2"></div>
       <div className="bg">
         <div className="element">
@@ -214,10 +244,35 @@ const App: React.FC = () => {
             className="title title07"
             style={{
               color: 'rgba(97, 75, 95, 0.6)',
-              fontSize: 220,
+              fontSize: 180,
             }}
           >
             Next.js
+          </span>
+          
+          {/* text8 */}
+          <span 
+            className="title title__vertical title08"
+            style={{
+              top: 0,
+              color: 'rgba(185,207,221, 0.6)',
+              fontSize: 520,
+              textOrientation: 'upright',
+              letterSpacing: -25,
+              textTransform: 'uppercase'
+            }}
+          >
+            frontend
+          </span>
+          <span 
+            className="title title09"
+            style={{
+              top: 0,
+              color: 'rgba(185,207,221, 0.6)',
+              fontSize: 120,
+            }}
+          >
+            TypeScript
           </span>
         </div>
       </div>
