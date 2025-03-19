@@ -219,14 +219,14 @@ const App: React.FC = () => {
         scrub: 5,
       }
     });
-    gsap.set('.title05_1', { x: '100vw', top: 60 }); 
+    gsap.set('.title05_1', { x: '100vw', top: 280 }); 
     gsap.to('.title05_1', { 
       x: -3000,
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: '.wrapper',
         start: 'top top',
-        end: '+=21000',
+        end: '+=21700',
         scrub: 5,
       }
     });
@@ -237,7 +237,7 @@ const App: React.FC = () => {
       scrollTrigger: {
         trigger: '.wrapper',
         start: 'top top',
-        end: '+=20800',
+        end: '+=21800',
         scrub: 5,
       }
     });
@@ -510,10 +510,10 @@ const App: React.FC = () => {
               color: '#fff',
               opacity: 0.2,
               filter: 'blur(10px)',
-              fontSize: 600,
+              fontSize: 300,
             }}
           >
-            +
+            ♥
           </span>
           <span 
             className="title title05_2"
