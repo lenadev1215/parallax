@@ -84,3 +84,31 @@
         letter-spacing: 10px;
     }
 }
+
+.code {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -42%);
+    width: 90%;
+    max-width: 1070px;
+    height: 330px;
+    line-height: 1.4;
+    padding: 50px;
+    border-radius: 30px;
+    background-color: rgba(10, 10, 59, 0.6);
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+
+    .text {
+        color: #fff;
+        font-size: 24px;
+
+        pre {
+            white-space: pre-line;
+        }
+        a {
+            text-decoration: underline;
+        }
+    }
+}

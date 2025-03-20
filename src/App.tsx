@@ -8,7 +8,39 @@ import './assets/sass/style.scss';
 // GSAP ScrollTrigger 플러그인 등록
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+const kayeong = {
+  phone: '01049967923',
+  email: 'lenadev7923@gmail.com',
+  blog: 'https://velog.io/@lenadev',
+  github: 'https://github.com/lenadev1215',
+  notion: ''
+}
+
 const App: React.FC = () => {
+  // 텍스트 렌더링
+  const renderObjectLikeText = (obj: Record<string, string>) => {
+    const entries = Object.entries(obj);
+    return (
+      <pre style={{ cursor: 'default' }}>
+        {'const kayeong = {\n'}
+        {entries.map(([key, value], index) => (
+          <span key={key}>
+            &nbsp;&nbsp;{key}: {value.startsWith('http') ? (
+              <a href={value} target="_blank" rel="noopener noreferrer">
+                '{value}'
+              </a>
+            ) : (
+              `'${value}'`
+            )}
+            {index < entries.length - 1 ? ',' : ''}
+            {'\n'}
+          </span>
+        ))}
+        {'}'}
+      </pre>
+    );
+  };
+  
   useGSAP(() => {
     const colors = ["#FFCDAA", "#F9AD93", "#F59A99", "#EC8FBE", "#C08CD4", "#9584D2", "#8674C8", "#6C52AD", "#674DA8", "#553F91", "#00005A"];
 
@@ -349,6 +381,17 @@ const App: React.FC = () => {
         scrub: true,
       }
     });
+    gsap.set('.code', { opacity: 0 }); 
+    gsap.to('.code', { 
+      opacity: 1,
+      y: '-50%',
+      ease: 'power3.inOut',
+      scrollTrigger: {
+        trigger: '.wrapper',
+        start: 'bottom 1500',
+        scrub: 2,
+      }
+    });
   }, []);
 
   return (
@@ -633,6 +676,12 @@ const App: React.FC = () => {
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
+      </div>
+
+      <div className="code">
+        <p className="text">
+          {renderObjectLikeText(kayeong)}
+        </p>
       </div>
     </div>
   );
