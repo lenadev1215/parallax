@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
-@import 'base/font.scss';
-@import 'base/reset.scss';
+@use './base/font';
+@use './base//reset';
 
-@import 'component/element.scss';
+@use './component/element';
+@use './component/stars';
