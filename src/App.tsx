@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from '@studio-freight/lenis';
 import './assets/sass/style.scss';
 
 // GSAP ScrollTrigger 플러그인 등록
