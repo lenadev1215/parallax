@@ -11,7 +11,7 @@ const kayeong = {
   email: 'lenadev7923@gmail.com',
   blog: 'https://velog.io/@lenadev',
   github: 'https://github.com/lenadev1215',
-  notion: ''
+  notion: 'https://geode-guava-13f.notion.site/7ade2ad413324aea86cda71684c6d3c2'
 }
 
 const App: React.FC = () => {
